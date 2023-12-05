@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class bPlayerInput : MonoBehaviour
 {
-    public CharacterController characterController;
+
     [HideInInspector]
     public Vector3 direction;
-    [HideInInspector]
-    public float horizontal, vertical;
+    float horizontal, vertical;
+
     
     void Update()
     {

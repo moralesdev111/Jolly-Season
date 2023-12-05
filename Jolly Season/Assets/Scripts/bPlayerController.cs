@@ -13,7 +13,7 @@ public class bPlayerController : MonoBehaviour
     public float gravity = -9.81f; 
     float turnSmoothVelocity;
     Vector3 velocity;
-
+  
 
     void Update()
     {
@@ -33,16 +33,12 @@ public class bPlayerController : MonoBehaviour
             // Apply gravity to the character's movement
             velocity.y += gravity * Time.deltaTime;
 
-            // Apply movement
             controller.Move((moveDir.normalized * speed + velocity) * Time.deltaTime);
         }
         else
         {
             // If not moving, reset the vertical velocity (to prevent constant falling)
-            velocity.y = 0f;
-
-            // Check if the defined key is pressed
-
+            velocity.y = 0f;            
         }
     }
 }

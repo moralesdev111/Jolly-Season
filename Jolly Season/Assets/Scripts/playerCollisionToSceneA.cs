@@ -7,8 +7,8 @@ using System;
 
 public class playerCollisionToSceneA : MonoBehaviour
 {
-    public bPlayerController bCharacterController;
     public string aScene;
+
 
      private void OnTriggerEnter(Collider other)
     {
@@ -18,7 +18,7 @@ public class playerCollisionToSceneA : MonoBehaviour
             LoadSceneA();
         }
     }
-
+    
     private void LoadSceneA()
     {
         if(!string.IsNullOrEmpty(aScene))
@@ -28,7 +28,6 @@ public class playerCollisionToSceneA : MonoBehaviour
         else
         {
             Debug.Log("Scene is not specified");
-        }
-        
+        }        
     }
 }
