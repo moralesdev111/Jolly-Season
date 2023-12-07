@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class bPlayerInput : MonoBehaviour
 {
-
-    [HideInInspector]
-    public Vector3 direction;
     float horizontal, vertical;
+    [HideInInspector]
+    public Vector3 direction;    
 
     
     void Update()

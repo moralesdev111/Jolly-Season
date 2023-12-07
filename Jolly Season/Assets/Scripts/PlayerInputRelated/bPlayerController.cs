@@ -5,15 +5,19 @@ using UnityEngine;
 
 public class bPlayerController : MonoBehaviour
 {
-    public bPlayerInput bPlayerInput;
-    public CharacterController controller;
-    public Transform townCamera;
+    [Header("Components")]
+    [SerializeField] bPlayerInput bPlayerInput;
+    [SerializeField] CharacterController controller;
+    [SerializeField] Transform townCamera;
+    
+    float turnSmoothVelocity;
+    Vector3 velocity;
+
+    [Header("Controls")]
     public float speed = 8f;
     public float turnSmoothTime = 0.1f;
     public float gravity = -9.81f; 
-    float turnSmoothVelocity;
-    Vector3 velocity;
-  
+      
 
     void Update()
     {
