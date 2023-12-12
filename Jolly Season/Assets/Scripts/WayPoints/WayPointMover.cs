@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WaypointMover : MonoBehaviour
 {
+    [SerializeField ]SoundManager soundManager;
     [SerializeField] private Waypoints waypoints; // reference to waypoint system
     [Header("Movement Settings")]
     [SerializeField ]private float movementSpeed = 40f;   
@@ -72,6 +73,7 @@ public class WaypointMover : MonoBehaviour
     {
         isAtAStop = true;
         yield return new WaitForSeconds(seconds);
+        soundManager.PlaySFX("Train");
         isAtAStop = false;
         currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
     }
