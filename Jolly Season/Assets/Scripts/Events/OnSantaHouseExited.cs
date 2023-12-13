@@ -16,7 +16,7 @@ public class OnSantaHouseExited : MonoBehaviour
     {        
     if(Input.GetKeyDown(exitHome))
         {
-            Actions.OnSantaHouseExited();
+            Events.OnSantaHouseExited();
         }
     }
 }

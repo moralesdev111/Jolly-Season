@@ -7,13 +7,13 @@ public class SceneManagement : MonoBehaviour
 {
     private void OnEnable()
     {
-        Actions.OnSantaHouseEntered += LoadSceneA;
-        Actions.OnSantaHouseExited += LoadSceneB;
+        Events.OnSantaHouseEntered += LoadSceneA;
+        Events.OnSantaHouseExited += LoadSceneB;
     }
     private void OnDisable()
     {
-        Actions.OnSantaHouseEntered -= LoadSceneA;
-        Actions.OnSantaHouseExited -= LoadSceneB;
+        Events.OnSantaHouseEntered -= LoadSceneA;
+        Events.OnSantaHouseExited -= LoadSceneB;
     }
     public void LoadSceneA()
     {

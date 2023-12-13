@@ -9,7 +9,7 @@ public class OnSantaHouseEnteredTrigger : MonoBehaviour
     {        
         if (other.CompareTag(sceneName))
         {
-            Actions.OnSantaHouseEntered();
+            Events.OnSantaHouseEntered();
         }
     }           
     

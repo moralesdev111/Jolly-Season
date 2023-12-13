@@ -73,7 +73,7 @@ public class WaypointMover : MonoBehaviour
     {
         isAtAStop = true;
         yield return new WaitForSeconds(seconds);
-        soundManager.PlaySFX("Train");
+        //soundManager.PlaySFX("Train");
         isAtAStop = false;
         currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
     }

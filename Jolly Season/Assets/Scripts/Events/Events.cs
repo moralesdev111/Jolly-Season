@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public static class Actions 
+public static class Events 
 {
     public static Action OnSantaHouseEntered;
 
