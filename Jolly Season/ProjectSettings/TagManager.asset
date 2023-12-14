@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - goToSceneA
+  - Target
   layers:
   - Default
   - TransparentFX
