@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SceneManagement : MonoBehaviour
 {
+    private int activeSceneIndex;
     private void OnEnable()
     {
         Events.OnSantaHouseEntered += LoadSceneA;
@@ -28,5 +29,11 @@ public class SceneManagement : MonoBehaviour
     public void LoadSceneC()
     {
         SceneManager.LoadScene("C");
+    }
+
+    public int GetCurrentScene()
+    {
+        activeSceneIndex = SceneManager.GetActiveScene().buildIndex;    
+        return activeSceneIndex;    
     }
 }
