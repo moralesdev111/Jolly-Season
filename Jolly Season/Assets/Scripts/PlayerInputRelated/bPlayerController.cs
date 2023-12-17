@@ -3,20 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class bPlayerController : MonoBehaviour
-{
-    
 
+public class bPlayerController : MonoBehaviour
+{   
     [Header("Components")]
     [SerializeField] bPlayerInput bPlayerInput;
     [SerializeField] CharacterController controller;
-    [SerializeField] Transform townCamera;
-
-    private bool detector; 
-    RaycastHit raycastHit;
-    [SerializeField] private float pickupRange = 10f;
-    
-
+    [SerializeField] Transform townCamera;        
     
     float turnSmoothVelocity;
     Vector3 velocity;
@@ -25,13 +18,17 @@ public class bPlayerController : MonoBehaviour
     public float speed = 8f;
     public float turnSmoothTime = 0.1f;
     public float gravity = -9.81f; 
+    private bool detector; 
+    RaycastHit raycastHit;
+    [SerializeField] private float pickupRange = 10f;
+    [SerializeField] GameObject pickupUI;
 
       
-
     void Update()
     {
         DirectionHandler();
         bPlayerInput.PickupObject();
+        bPlayerInput.DropObject();
     }
 
     public void DirectionHandler()
@@ -56,13 +53,13 @@ public class bPlayerController : MonoBehaviour
         }
     }
 
-    public bool RayCasting()
+    public bool CheckIfYouCanPickUpObject()
     {        
         detector = Physics.Raycast(transform.position, transform.forward, out raycastHit, pickupRange);
         if(detector)
         {
             if(raycastHit.collider.CompareTag("PickUp"))
-            Debug.Log("Object Detected");  
+            Debug.Log("Object Picked Up");  
             return true;          
         }
         else
@@ -70,6 +67,40 @@ public class bPlayerController : MonoBehaviour
             return false;
         }        
     }
+
+    public void PickTheObject()
+    {
+        if(CheckIfYouCanPickUpObject())
+        {
+            raycastHit.collider.transform.SetParent(transform);
+             raycastHit.collider.transform.localPosition = Vector3.one;
+            raycastHit.collider.transform.localRotation = Quaternion.identity;
+            pickupUI.SetActive(false);
+        }
+        bPlayerInput.hasObject = true;            
+    }
+    public void DropTheObject()
+    {
+        raycastHit.collider.transform.SetParent(null,true);
+        pickupUI.SetActive(true);
+        
+
+    }
+    void OnTriggerStay(Collider other)
+    {
+        if(other.CompareTag("PickUp") && bPlayerInput.hasObject == false)
+        {
+            pickupUI.SetActive(true);
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("PickUp"))
+        {
+            pickupUI.SetActive(false);
+        }        
+    }    
+
     
 }
     

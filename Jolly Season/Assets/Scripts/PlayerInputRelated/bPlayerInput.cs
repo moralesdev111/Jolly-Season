@@ -5,16 +5,15 @@ using UnityEngine;
 
 public class bPlayerInput : MonoBehaviour
 {
-    float horizontal, vertical;
-    [HideInInspector]
-    public Vector3 direction; 
-
+    [HideInInspector] public Vector3 direction; 
     [SerializeField] bPlayerController bPlayerController;
     [SerializeField] KeyCode pickObject = KeyCode.F;
-    
-    
+    [SerializeField] KeyCode dropObject = KeyCode.R;
+    private float horizontal;
+    private float vertical;      
+    public bool hasObject = false;
 
-    
+
     void Update()
     {
         PlayerInput();
@@ -28,12 +27,20 @@ public class bPlayerInput : MonoBehaviour
     }
 
     public void PickupObject()
-    {
-        if(Input.GetKeyDown(pickObject))
-        {
-            bPlayerController.RayCasting();
-        }
-    }
+    {        if(Input.GetKeyDown(pickObject))
+        {            
+            bPlayerController.CheckIfYouCanPickUpObject();
+            bPlayerController.PickTheObject();
+        }        
+    }        
 
-    
+    public void DropObject()
+    {
+        if(Input.GetKeyDown(dropObject) && hasObject == true)
+        {
+            bPlayerController.DropTheObject();
+            Debug.Log("Drop Object");
+        }
+        
+    }
 }
