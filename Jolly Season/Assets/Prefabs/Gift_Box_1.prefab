@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6466196423081077919}
   - component: {fileID: 3975323115077217810}
   - component: {fileID: 2362640825975298818}
+  - component: {fileID: -3580370740368909512}
   m_Layer: 0
   m_Name: Gift_Box_1
   m_TagString: Untagged
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-3580370740368909512
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582074581811199277}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.90212464, y: 0.7544595, z: 0.90212464}
+  m_Center: {x: -0.0031274557, y: 0.077228665, z: 0.0012015551}

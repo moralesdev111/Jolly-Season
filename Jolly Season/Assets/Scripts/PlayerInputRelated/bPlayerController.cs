@@ -5,10 +5,18 @@ using UnityEngine;
 
 public class bPlayerController : MonoBehaviour
 {
+    
+
     [Header("Components")]
     [SerializeField] bPlayerInput bPlayerInput;
     [SerializeField] CharacterController controller;
     [SerializeField] Transform townCamera;
+
+    private bool detector; 
+    RaycastHit raycastHit;
+    [SerializeField] private float pickupRange = 10f;
+    
+
     
     float turnSmoothVelocity;
     Vector3 velocity;
@@ -17,11 +25,13 @@ public class bPlayerController : MonoBehaviour
     public float speed = 8f;
     public float turnSmoothTime = 0.1f;
     public float gravity = -9.81f; 
+
       
 
     void Update()
     {
         DirectionHandler();
+        bPlayerInput.PickupObject();
     }
 
     public void DirectionHandler()
@@ -45,6 +55,22 @@ public class bPlayerController : MonoBehaviour
             velocity.y = 0f;            
         }
     }
+
+    public bool RayCasting()
+    {        
+        detector = Physics.Raycast(transform.position, transform.forward, out raycastHit, pickupRange);
+        if(detector)
+        {
+            if(raycastHit.collider.CompareTag("PickUp"))
+            Debug.Log("Object Detected");  
+            return true;          
+        }
+        else
+        {
+            return false;
+        }        
+    }
+    
 }
     
 
