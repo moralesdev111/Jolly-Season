@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] Canvas pickupUI;
+    [SerializeField] Canvas sendOffUI;
 
     public void TurnOnPickupUI()
     {
@@ -15,5 +16,14 @@ public class UIManager : MonoBehaviour
     public void TurnOffPickupUI()
     {
         pickupUI.gameObject.SetActive(false);
+    }
+
+    public void TurnOnSendOffUI()
+    {
+        sendOffUI.gameObject.SetActive(true);
+    }
+    public void TurnOffSendOffUI()
+    {
+        sendOffUI.gameObject.SetActive(false);
     }
 }

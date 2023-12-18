@@ -50,24 +50,31 @@ public class Pickup : MonoBehaviour
 }
     
     
-public virtual void DropTheObject()
+public void DropTheObject()
 {
     if (pickedObject != null)
     {
-        
         pickedObject.transform.SetParent(null, true);
          // Drop directly beneath the player
         pickedObject = null;
         hasObject = false;
-        uIManager.TurnOnPickupUI(); // Show UI when the object is dropped
+        if(dropOff.isInsideDropoffArea == true){
+uIManager.TurnOffPickupUI(); // Show UI when the object is dropped
+        }
+        else return;
     }
 }
     void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("PickUp") && hasObject == false)
+        if(other.CompareTag("PickUp") && hasObject == false && dropOff.isInsideDropoffArea == false)
         {
             uIManager.TurnOnPickupUI();
         }
+        else 
+        {
+            uIManager.TurnOffPickupUI();
+        }
+        
     }
     void OnTriggerExit(Collider other)
     {
@@ -76,7 +83,6 @@ public virtual void DropTheObject()
             uIManager.TurnOffPickupUI();
         }        
     }    
-
     public void Destroy()
     {
         Destroy(dropOff.sentObject);
