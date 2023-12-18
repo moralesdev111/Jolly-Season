@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
+     [SerializeField] DropOff dropOff;
     [SerializeField] bPlayerInput bPlayerInput;
     public bool hasObject = false;
     private bool detector; 
     RaycastHit raycastHit;
     [SerializeField] private float pickupRange = 10f;
-    [SerializeField] GameObject pickupUI;
-    private GameObject pickedObject;
+    [SerializeField] UIManager uIManager;
+    public GameObject pickedObject;
     [SerializeField] Vector3 offsetFromPlayer = new Vector3(1f,0,1.4f);
   
 
@@ -21,7 +22,7 @@ public class Pickup : MonoBehaviour
     }
 
     
-    public GameObject CheckIfYouCanPickUpObject()
+    public GameObject ReturnPickedGameObject()
     {        
         detector = Physics.Raycast(transform.position, transform.forward, out raycastHit, pickupRange);
         if(detector && raycastHit.collider.CompareTag("PickUp"))
@@ -36,7 +37,7 @@ public class Pickup : MonoBehaviour
 
     public void PickTheObject()
 {
-    GameObject obj = CheckIfYouCanPickUpObject();
+    GameObject obj = ReturnPickedGameObject();
     if(obj != null && pickedObject == null)
     {
         pickedObject = obj;
@@ -44,12 +45,12 @@ public class Pickup : MonoBehaviour
         obj.transform.localPosition = offsetFromPlayer; // Apply offset
         obj.transform.localRotation = Quaternion.identity;
         hasObject = true;
-        pickupUI.SetActive(false); // Hide UI if the object is picked up
+        uIManager.TurnOffPickupUI(); // Hide UI if the object is picked up
     }
 }
     
     
-public void DropTheObject()
+public virtual void DropTheObject()
 {
     if (pickedObject != null)
     {
@@ -58,21 +59,26 @@ public void DropTheObject()
          // Drop directly beneath the player
         pickedObject = null;
         hasObject = false;
-        pickupUI.SetActive(true); // Show UI when the object is dropped
+        uIManager.TurnOnPickupUI(); // Show UI when the object is dropped
     }
 }
     void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("PickUp") && hasObject == false)
         {
-            pickupUI.SetActive(true);
+            uIManager.TurnOnPickupUI();
         }
     }
     void OnTriggerExit(Collider other)
     {
         if(other.CompareTag("PickUp"))
         {
-            pickupUI.SetActive(false);
+            uIManager.TurnOffPickupUI();
         }        
     }    
+
+    public void Destroy()
+    {
+        Destroy(dropOff.sentObject);
+    }
 }

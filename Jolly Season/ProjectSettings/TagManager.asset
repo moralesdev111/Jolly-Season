@@ -7,6 +7,9 @@ TagManager:
   - goToSceneA
   - Target
   - PickUp
+  - DropPoint
+  - KillPresent
+  - A
   layers:
   - Default
   - TransparentFX

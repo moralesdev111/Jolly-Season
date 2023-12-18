@@ -9,7 +9,7 @@ public class bPlayerInput : MonoBehaviour
     [HideInInspector] public Vector3 direction; 
    
     [SerializeField] KeyCode pickObject = KeyCode.F;
-    [SerializeField] KeyCode dropObject = KeyCode.R;
+    public KeyCode dropObject = KeyCode.R;
     private float horizontal;
     private float vertical;      
     
