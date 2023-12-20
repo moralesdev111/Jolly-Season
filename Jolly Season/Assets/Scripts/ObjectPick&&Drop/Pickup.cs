@@ -9,7 +9,7 @@ public class Pickup : MonoBehaviour
     public bool hasObject = false;
     private bool detector; 
     RaycastHit raycastHit;
-    [SerializeField] private float pickupRange = 10f;
+    [SerializeField] private float pickupRange = 4f;
     [SerializeField] UIManager uIManager;
     public GameObject pickedObject;
     [SerializeField] Vector3 offsetFromPlayer = new Vector3(1f,0,1.4f);

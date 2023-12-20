@@ -4791,7 +4791,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479094327}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -1e-45, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6002,6 +6002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 800963402af3fea4994ab2fbabe78690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4226879901885835748}
   bPlayerInput: {fileID: 598331739}
   controller: {fileID: 598331736}
   townCamera: {fileID: 2065460873}
@@ -6051,7 +6052,7 @@ MonoBehaviour:
   dropOff: {fileID: 598331742}
   bPlayerInput: {fileID: 598331739}
   hasObject: 0
-  pickupRange: 10
+  pickupRange: 4
   uIManager: {fileID: 666671232}
   pickedObject: {fileID: 0}
   offsetFromPlayer: {x: 1.1, y: 0, z: 1.4}
@@ -6071,6 +6072,7 @@ MonoBehaviour:
   pickup: {fileID: 598331741}
   parentTrain: {fileID: 963126900}
   offsetFromTrain: {x: 0.6, y: 4.8, z: -6}
+  isInsideDropoffArea: 0
   sentObject: {fileID: 0}
 --- !u!1 &600820109
 GameObject:
@@ -19141,6 +19143,11 @@ Transform:
 --- !u!4 &4226879901885835747 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1620513106084135869, guid: 4a08d463c7acff94f91c54e7c34a328d, type: 3}
+  m_PrefabInstance: {fileID: 5500552933834666557}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4226879901885835748 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2997596310726595367, guid: 4a08d463c7acff94f91c54e7c34a328d, type: 3}
   m_PrefabInstance: {fileID: 5500552933834666557}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5211206963260765428

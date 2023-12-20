@@ -7,6 +7,7 @@ using UnityEngine;
 public class bPlayerController : MonoBehaviour
 {   
     [Header("Components")]
+    [SerializeField] Animator animator;
     [SerializeField] bPlayerInput bPlayerInput;
     [SerializeField] CharacterController controller;
     [SerializeField] Transform townCamera;        
@@ -29,6 +30,7 @@ public class bPlayerController : MonoBehaviour
     {
         if (bPlayerInput.direction.magnitude >= 0.1f)
         {
+            animator.SetBool("isMoving",true);
             float targetAngle = Mathf.Atan2(bPlayerInput.direction.x, bPlayerInput.direction.z) * Mathf.Rad2Deg + townCamera.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -42,6 +44,7 @@ public class bPlayerController : MonoBehaviour
         }
         else
         {
+            animator.SetBool("isMoving",false);
             // If not moving, reset the vertical velocity (to prevent constant falling)
             velocity.y = 0f;            
         }
